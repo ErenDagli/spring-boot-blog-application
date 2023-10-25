@@ -2,6 +2,7 @@ package com.dagli.springboot;
 
 import com.dagli.springboot.entity.Role;
 import com.dagli.springboot.repository.RoleRepository;
+import com.dagli.springboot.unittest.CollegeStudent;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -13,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 
 @SpringBootApplication
 @OpenAPIDefinition(
@@ -47,6 +49,12 @@ public class Application implements CommandLineRunner {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Bean(name = "collegeStudent")
+    @Scope(value = "prototype")
+    CollegeStudent getCollegeStudent() {
+        return new CollegeStudent();
+    }
 
     @Override
     public void run(String... args) throws Exception {
