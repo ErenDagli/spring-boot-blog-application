@@ -25,4 +25,17 @@ public class CategoryDto {
             description = "Blog Category Description"
     )
     private String description;
+
+    @Override
+    public String toString() {
+        return "CategoryDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    private String getNameAndDescription() {
+        return name + " " + description;
+    }
 }
